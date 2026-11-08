@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Naming</title>
+
+<script>
+/* =====================================================================
+   EDITA AQUÍ LOS PRODUCTOS
+   - Cada producto es un bloque { name: '...', desc: '...', names: { ... } }.
+   - "name" es el nombre del producto (el de España) que sale como título.
+   - "desc" es la descripción corta en inglés (máx 8 palabras).
+   - En "names" pon el nombre local de cada país. Déjalo en '' si aún no lo hay.
+   - Para añadir un producto, copia un bloque entero y pégalo debajo.
+   - El orden en que están aquí es el orden en que salen.
+   ===================================================================== */
+const PRODUCTS = [
+  {
+    name: 'Bionova',
+    desc: 'Nail Fungus Drops',
+    names: {
+      es: 'Bionova',   // Spain
+      pt: 'Onilux',    // Portugal
+      hu: 'Zenöra',    // Hungary
+      pl: 'Purónex',   // Poland
+      cz: 'Vělorix',   // Czech Republic
+      ro: 'Vițarin',   // Romania
+      si: 'Šenovil',   // Slovenia
+      sk: 'Clarôvex',  // Slovakia
+      hr: 'Želovin'    // Croatia
+    }
+  },
+  {
+    name: 'FascioFlex',
+    desc: 'Plantar Fasciitis Ankle Brace',
+    names: {
+      es: 'FascioFlex', // Spain
+      pt: 'Artivex',    // Portugal
+      hu: 'Velürin',    // Hungary
+      pl: 'Orłavex',    // Poland
+      cz: 'Artěvol',    // Czech Republic
+      ro: 'Kineșol',    // Romania
+      si: 'Ortežol',    // Slovenia
+      sk: 'Kinôvol',    // Slovakia
+      hr: 'Đenoval'     // Croatia
+    }
+  },
+  {
+    name: 'Vidabelle',
+    desc: 'Korean Collagen Beauty Balm',
+    names: {
+      es: 'Vidabelle',  // Spain
+      pt: 'Velaçon',    // Portugal
+      hu: 'Bellüra',    // Hungary
+      pl: 'Lumęvix',    // Poland
+      cz: 'Radičor',    // Czech Republic
+      ro: 'Velișor',    // Romania
+      si: 'Radžovin',   // Slovenia
+      sk: 'Luminôr',    // Slovakia
+      hr: 'Belićor'     // Croatia
+    }
+  },
+  {
+    name: 'Dentiva',
+    desc: 'Infrared Light for Gum Recession',
+    names: {
+      es: 'Dentiva',    // Spain
+      pt: 'Orivox',     // Portugal
+      hu: 'Dentövex',   // Hungary
+      pl: 'Dentóvil',   // Poland
+      cz: 'Orivřex',    // Czech Republic
+      ro: 'Ginăvol',    // Romania
+      si: 'Ginžorel',   // Slovenia
+      sk: 'Ginľorit',   // Slovakia
+      hr: 'Oršorit'     // Croatia
+    }
+  },
+  {
+    name: 'Cervinova',
+    desc: 'Cervical Massager & Hump Corrector',
+    names: {
+      es: 'Cervinova',  // Spain
+      pt: 'Renovél',    // Portugal
+      hu: 'Dorsüvin',   // Hungary
+      pl: 'Kołovin',    // Poland
+      cz: 'Dorsěvil',   // Czech Republic
+      ro: 'Dorșovin',   // Romania
+      si: 'Dorsčovin',  // Slovenia
+      sk: 'Postôrel',   // Slovakia
+      hr: 'Cervčorin'   // Croatia
+    }
+  },
+  {
+    name: 'Neuvora',
+    desc: 'EMS Device for Spinal Stenosis',
+    names: {
+      es: 'Neuvora',    // Spain
+      pt: 'Kinoçal',    // Portugal
+      hu: 'Neurölex',   // Hungary
+      pl: 'Impółex',    // Poland
+      cz: 'Kiněvrix',   // Czech Republic
+      ro: 'Spinoțel',   // Romania
+      si: 'Spinžolex',  // Slovenia
+      sk: 'Stimôvox',   // Slovakia
+      hr: 'Neurođex'    // Croatia
+    }
+  },
+  {
+    name: 'AlineaPlus',
+    desc: 'Bunion Corrector',
+    names: {
+      es: 'AlineaPlus', // Spain
+      pt: 'Peçorin',    // Portugal
+      hu: 'Pedüvol',    // Hungary
+      pl: 'Korżelin',   // Poland
+      cz: 'Korževin',   // Czech Republic
+      ro: 'Podăvix',    // Romania
+      si: 'Alinčex',    // Slovenia
+      sk: 'Alinľovit',  // Slovakia
+      hr: 'Ravnićex'    // Croatia
+    }
+  },
+  {
+    name: 'Restora',
+    desc: 'Knee Pillow for Back & Sciatica',
+    names: {
+      es: 'Restora',    // Spain
+      pt: 'Serenix',    // Portugal
+      hu: 'Alvörix',    // Hungary
+      pl: 'Somnórit',   // Poland
+      cz: 'Noktěvol',   // Czech Republic
+      ro: 'Noxărel',    // Romania
+      si: 'Serenčil',   // Slovenia
+      sk: 'Dormôvil',   // Slovakia
+      hr: 'Kaližovin'   // Croatia
+    }
+  },
+  {
+    name: 'Aquelia',
+    desc: 'Shower Head Filter for Lime & Chlorine',
+    names: {
+      es: 'Aquelia',    // Spain
+      pt: 'Puriçol',    // Portugal
+      hu: 'Aquörin',    // Hungary
+      pl: 'Akvośin',    // Poland
+      cz: 'Hydřovex',   // Czech Republic
+      ro: 'Akvățol',    // Romania
+      si: 'Filšorel',   // Slovenia
+      sk: 'Akvaňol',    // Slovakia
+      hr: 'Hidrićex'    // Croatia
+    }
+  }
+];
+</script>
+
+<style>
+:root{
+  --line:#e5e7eb; --line2:#d4d7dd; --ink:#111111; --ink2:#374151; --mute:#6b7280; --faint:#9ca3af; --hover:#f3f4f6;
+  --font:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;font-size:15px}
+button{font-family:inherit;cursor:pointer}
+
+.wrap{max-width:1100px;margin:0 auto;padding:28px 32px 80px}
+.head{padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:22px}
+h1{font-size:26px;font-weight:600;margin:0;letter-spacing:-.01em}
+
+.search{position:relative;margin-bottom:22px}
+.search input{width:100%;height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 14px 0 38px;font:inherit;font-size:14px;color:var(--ink);outline:none}
+.search input::placeholder{color:var(--faint)}
+.search input:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(17,17,17,.08)}
+.search svg{position:absolute;left:13px;top:11px;width:17px;height:17px;stroke:var(--faint);fill:none;stroke-width:2;stroke-linecap:round}
+
+.product{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:16px;overflow:hidden}
+.p-head{display:flex;align-items:center;gap:10px;padding:14px 18px 14px 14px;border-bottom:2px solid var(--ink);cursor:pointer;user-select:none}
+.p-head:hover{background:#fafafa}
+.product.closed .p-head{border-bottom:0}
+.p-toggle{width:28px;height:28px;border:0;background:none;display:grid;place-items:center;color:var(--mute);border-radius:6px;flex:none}
+.p-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s}
+.product.closed .p-toggle svg{transform:rotate(-90deg)}
+.p-name{font-size:19px;font-weight:700;flex:1;min-width:0;overflow-wrap:anywhere}
+.p-desc{font-weight:400;color:var(--mute);font-size:15px}
+.product.closed .p-body{display:none}
+.p-body{padding:6px 18px 10px}
+
+.row{display:grid;grid-template-columns:260px 1fr;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #f0f1f3}
+.row:first-child{border-top:0}
+.row.head-row{color:var(--faint);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 0 6px}
+.row.head-row span:first-child{padding-left:38px}
+.c-country{display:flex;align-items:center;gap:10px}
+.flag{font-size:22px;line-height:1;width:28px;text-align:center;flex:none}
+.c-name{font-weight:700;font-size:15.5px;white-space:nowrap}
+.local{font-size:16px;font-weight:500}
+.local.none{color:var(--faint);font-weight:400}
+.empty-all{text-align:center;color:var(--faint);padding:48px 0;border:1px dashed var(--line2);border-radius:12px}
+
+@media (max-width:640px){
+  .wrap{padding:16px 14px 60px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .row.head-row{display:none}
+  .local{padding-left:38px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head"><h1>Product Naming</h1></div>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input type="text" id="search" placeholder="Search product or name…">
+  </div>
+
+  <div id="list"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const COUNTRIES = [
+  { code:'es', flag:'🇪🇸', name:'Spain' },
+  { code:'pt', flag:'🇵🇹', name:'Portugal' },
+  { code:'hu', flag:'🇭🇺', name:'Hungary' },
+  { code:'pl', flag:'🇵🇱', name:'Poland' },
+  { code:'cz', flag:'🇨🇿', name:'Czech Republic' },
+  { code:'ro', flag:'🇷🇴', name:'Romania' },
+  { code:'si', flag:'🇸🇮', name:'Slovenia' },
+  { code:'sk', flag:'🇸🇰', name:'Slovakia' },
+  { code:'hr', flag:'🇭🇷', name:'Croatia' }
+];
+const KEY = 'product_naming_closed_v1';
+let closed = new Set();
+try{ closed = new Set(JSON.parse(localStorage.getItem(KEY)) || []); }catch(e){}
+const saveClosed = () => { try{ localStorage.setItem(KEY, JSON.stringify([...closed])); }catch(e){} };
+
+const listEl = document.getElementById('list');
+const searchEl = document.getElementById('search');
+const CARET = '<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>';
+
+function render(){
+  const q = searchEl.value.trim().toLowerCase();
+  listEl.innerHTML = '';
+  let shown = 0;
+  PRODUCTS.forEach(p => {
+    const names = p.names || {};
+    if (q){
+      const hay = [p.name, p.desc||'', ...COUNTRIES.map(c => names[c.code] || '')].join(' ').toLowerCase();
+      if (!hay.includes(q)) return;
+    }
+    shown++;
+    const el = document.createElement('section');
+    el.className = 'product' + (closed.has(p.name) && !q ? ' closed' : '');
+    el.innerHTML = `
+      <div class="p-head">
+        <button class="p-toggle" type="button" aria-label="Collapse / expand">${CARET}</button>
+        <div class="p-name"></div>
+      </div>
+      <div class="p-body">
+        <div class="row head-row"><span>Country</span><span>Name</span></div>
+      </div>`;
+    const pn = el.querySelector('.p-name');
+    pn.textContent = p.name;
+    if(p.desc){const d=document.createElement('span');d.className='p-desc';d.textContent=' — '+p.desc;pn.appendChild(d);}
+    const body = el.querySelector('.p-body');
+    COUNTRIES.forEach(c => {
+      const n = (names[c.code] || '').trim();
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `
+        <div class="c-country"><span class="flag">${c.flag}</span><span class="c-name">${c.name}</span></div>
+        <div class="local${n ? '' : ' none'}"></div>`;
+      row.querySelector('.local').textContent = n || '—';
+      body.appendChild(row);
+    });
+    el.querySelector('.p-head').addEventListener('click', () => {
+      if (closed.has(p.name)) closed.delete(p.name); else closed.add(p.name);
+      saveClosed(); render();
+    });
+    listEl.appendChild(el);
+  });
+  if (!shown) listEl.innerHTML = `<div class="empty-all">${PRODUCTS.length ? 'No matches.' : 'No products yet.'}</div>`;
+}
+
+searchEl.addEventListener('input', render);
+render();
+})();
+</script>
+</body>
+</html>
